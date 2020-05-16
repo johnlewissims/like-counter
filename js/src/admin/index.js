@@ -1,3 +1,3 @@
 app.initializers.add('ejin/like-counter', () => {
-  //console.log('[ejin/like-counter] Hello, admin!');
+  console.log('[ejin/like-counter] Hello, admin!');
 });
