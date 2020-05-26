@@ -8,13 +8,8 @@ import icon from 'flarum/helpers/icon';
 
 app.initializers.add('ejin/like-counter', () => {
   extend(UserCard.prototype, 'infoItems', function (items) {
-    const comments = this.props.user.data.attributes.commentCount;
-    app.request({
-        url: app.forum.attribute('apiUrl') + '/users/' + this.props.user.id(),
-        method: 'GET',
-    }).then(data => {
-      items.add('ejin-like-counter', m('span', [icon('fas fa-thumbs-up'), ' ', data, ' Likes']));
-    });
+    const likes = this.props.user.data.attributes.ejinLikeCount;
+    items.add('ejin-like-counter', m('span', [icon('fas fa-thumbs-up'), ' ', likes, ' Likes']));
   });
 
   extend(CommentPost.prototype, 'headerItems', function (items) {

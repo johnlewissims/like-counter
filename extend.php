@@ -15,14 +15,9 @@ use Flarum\Extend;
 use Flarum\Frontend\Document;
 use Flarum\User\User;
 use Flarum\Foundation\Application;
-use Flarum\Likes\Event\PostWasLiked;
-use Flarum\Likes\Event\PostWasUnliked;
 use Illuminate\Contracts\Events\Dispatcher;
 
-use Ejin\LikeCounter\Controllers\UserLikesController;
-use Ejin\LikeCounter\Extenders\AddUserAttributes;
-use Ejin\LikeCounter\Listeners\LikedPost;
-use Ejin\LikeCounter\Listeners\UnlikedPost;
+use Ejin\LikeCounter\Serializers\EjinUserSerializer;
 
 return [
     (new Extend\Frontend('forum'))
@@ -30,13 +25,5 @@ return [
         ->css(__DIR__.'/resources/less/forum.less'),
     new Extend\Locales(__DIR__ . '/resources/locale'),
 
-    new AddUserAttributes(),
-
-    function (Dispatcher $events) {
-      $events->listen(PostWasLiked::class, LikedPost::class);
-      $events->listen(PostWasUnliked::class, UnlikedPost::class);
-    },
-
-    (new Extend\Routes('api'))
-    ->get('/users/{id}/like-count', 'ejin-like-counter', UserLikesController::class)
+    new EjinUserSerializer(),
 ];
