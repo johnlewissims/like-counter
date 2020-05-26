@@ -38,5 +38,5 @@ return [
     },
 
     (new Extend\Routes('api'))
-    ->get('/like-count-init', 'ejin-like-counter', UserLikesController::class)
+    ->get('/users/{id}/like-count', 'ejin-like-counter', UserLikesController::class)
 ];

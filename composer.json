@@ -11,7 +11,7 @@
   },
   "authors": [
     {
-      "name": "John Lewis SIms",
+      "name": "John Lewis Sims",
       "email": "john@ejincollective.com",
       "role": "Developer"
     }
@@ -25,9 +25,9 @@
     "flarum-extension": {
       "title": "Like Counter",
       "icon": {
-        "name": "",
-        "backgroundColor": "",
-        "color": ""
+        "name": "fas fa-plus",
+        "backgroundColor": "#2D2927",
+        "color": "#76B9DB"
       }
     },
     "flagrow": {
