@@ -20,8 +20,7 @@ class EjinUserSerializer implements ExtenderInterface
     public function attributes(Serializing $event)
     {
       if ($event->isSerializer(UserSerializer::class)) {
-        $userId = User::where('username', $event->attributes['username'])->select('id')->get()->first();
-        $event->attributes['ejinLikeCount'] = Post::where('user_id', $userId->id)->select('id')->withCount('likes')->get()->sum('likes_count');
+        $event->attributes['ejinLikeCount'] = Post::where('user_id', $event->model->id)->select('id')->withCount('likes')->get()->sum('likes_count');
       }
     }
 }
