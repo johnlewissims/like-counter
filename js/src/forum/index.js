@@ -9,7 +9,7 @@ import icon from 'flarum/helpers/icon';
 app.initializers.add('ejin/like-counter', () => {
   extend(UserCard.prototype, 'infoItems', function (items) {
     const likes = this.props.user.data.attributes.ejinLikeCount;
-    items.add('ejin-like-counter', m('span', [icon('fas fa-thumbs-up'), ' ', likes, ' Likes']));
+    items.add('ejin-like-counter', m('span', [icon('fas fa-thumbs-up'), ' ', likes, ' Total Likes']));
   });
 
   extend(CommentPost.prototype, 'headerItems', function (items) {
